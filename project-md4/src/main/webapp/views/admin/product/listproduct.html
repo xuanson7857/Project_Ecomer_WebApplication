@@ -1,0 +1,139 @@
+<!DOCTYPE html >
+<html xmlns:th="http://www.thymeleaf.org">
+<th:block th:insert="admin/layouts/head.html"></th:block>
+<body class="hold-transition skin-blue sidebar-mini">
+<!-- Site wrapper -->
+<div class="wrapper">
+
+    <th:block th:insert="admin/layouts/header.html"></th:block>
+
+    <!-- Left side column. contains the sidebar -->
+    <th:block th:insert="admin/layouts/sidebar.html"></th:block>
+
+    <!-- =============================================== -->
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+
+        <div class="box __web-inspector-hide-shortcut__">
+
+            <section class="content-header">
+                <h1>
+                    Table Product
+                </h1>
+                <ol class="breadcrumb">
+                    <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                    <li class="active">Table Product</li>
+                </ol>
+            </section>
+
+
+            <section class="content-header">
+                <h1>
+                    <a href="/admin/addproduct" class="btn btn-success pull-left" style="margin-bottom:20px"> Thêm mới</a>
+                </h1>
+                <ol class="breadcrumb">
+                    <input  style="margin-bottom:20px" type="text" class="form-control pull-right" placeholder="Tìm kiếm"/>
+                </ol>
+            </section>
+
+            <div class="box-body">
+                <div id="example2_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+                    <div class="row">
+                        <div class="col-sm-6"></div>
+                        <div class="col-sm-6"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <table id="example2" class="table table-bordered table-hover dataTable" role="grid"
+                                   aria-describedby="example2_info">
+                                <thead>
+                                <tr role="row">
+                                    <th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1"
+                                        colspan="1"
+                                        aria-sort="ascending"
+                                        aria-label="Rendering engine: activate to sort column descending">ID
+                                    </th>
+                                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                                        aria-label="Browser: activate to sort column ascending">Name
+                                    </th>
+                                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                                        aria-label="Platform(s): activate to sort column ascending">Description
+                                    </th>
+                                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                                        aria-label="Engine version: activate to sort column ascending">Price
+                                    </th>
+                                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                                        aria-label="CSS grade: activate to sort column ascending">Image
+                                    </th>
+                                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                                        aria-label="CSS grade: activate to sort column ascending">Stock
+                                    </th>
+                                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                                        aria-label="CSS grade: activate to sort column ascending">Category
+                                    </th>
+                                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                                        aria-label="CSS grade: activate to sort column ascending">Active
+                                    </th>
+
+                                </tr>
+                                </thead>
+
+                                <tbody>
+
+                                <tr role="row" class="odd" th:each="p:${productList}">
+                                    <td class="sorting_1" th:text="${p.productId}"></td>
+                                    <td th:text="${p.productName}"></td>
+                                    <td th:text="${p.description}"></td>
+                                    <td th:text="${p.price}"></td>
+                                    <td>
+                                        <img alt="" th:src="@{'/uploads/'+${p.image}}" width="80%" height="70px">
+                                    </td>
+                                    <td th:text="${p.stock}"></td>
+                                    <td th:text="${p.category.categoryName}"></td>
+
+                                    <td>
+                                        <a th:href="@{'/admin/updateproduct/' + ${p.productId}}" class="btn btn-primary">
+                                            Sửa
+                                        </a>
+                                        <a th:href="@{'/admin/deleteproduct/' + ${p.productId}}" class="btn btn-danger">
+                                            Xoá
+                                        </a>
+                                    </td>
+
+
+                                </tr>
+
+                                </tbody>
+
+
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-5">
+                            <div class="dataTables_info" id="example2_info" role="status" aria-live="polite">Showing 1
+                                to 10
+                                of 57 entries
+                            </div>
+                        </div>
+                        <div class="col-sm-7">
+                            <div class="dataTables_paginate paging_simple_numbers" id="example2_paginate">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <th:block th:insert="admin/layouts/footer.html"></th:block>
+
+</div>
+
+<th:block th:insert="admin/layouts/script.html"></th:block>
+</body>
+</html>

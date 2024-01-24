@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<!-- Mirrored from ledthanhdat.vn/html/stelina/checkout.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 23 Nov 2023 08:29:45 GMT -->
+<th:block th:insert="users/layouts/head.html"></th:block>
+
+<body class="inblog-page">
+
+<th:block th:insert="users/layouts/header.html"></th:block>
+
+<div class="header-device-mobile">
+    <div class="wapper">
+        <div class="item mobile-logo">
+            <div class="logo">
+                <a href="#">
+                    <img th:src="@{/images/logo.png}" alt="img">
+                </a>
+            </div>
+        </div>
+        <div class="item item mobile-search-box has-sub">
+            <a href="#">
+						<span class="icon">
+							<i class="fa fa-search" aria-hidden="true"></i>
+						</span>
+            </a>
+            <div class="block-sub">
+                <a href="#" class="close">
+                    <i class="fa fa-times" aria-hidden="true"></i>
+                </a>
+                <div class="header-searchform-box">
+                    <form class="header-searchform">
+                        <div class="searchform-wrap">
+                            <input type="text" class="search-input" placeholder="Enter keywords to search...">
+                            <input type="submit" class="submit button" value="Search">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="item mobile-settings-box has-sub">
+            <a href="#">
+						<span class="icon">
+							<i class="fa fa-cog" aria-hidden="true"></i>
+						</span>
+            </a>
+            <div class="block-sub">
+                <a href="#" class="close">
+                    <i class="fa fa-times" aria-hidden="true"></i>
+                </a>
+                <div class="block-sub-item">
+                    <h5 class="block-item-title">Currency</h5>
+                    <form class="currency-form stelina-language">
+                        <ul class="stelina-language-wrap">
+                            <li class="active">
+                                <a href="#">
+											<span>
+												English (USD)
+											</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+											<span>
+												French (EUR)
+											</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+											<span>
+												Japanese (JPY)
+											</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="item menu-bar">
+            <a class=" mobile-navigation  menu-toggle" href="#">
+                <span></span>
+                <span></span>
+                <span></span>
+            </a>
+        </div>
+    </div>
+</div>
+<div class="main-content main-content-checkout">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb-trail breadcrumbs">
+                    <ul class="trail-items breadcrumb">
+                        <li class="trail-item trail-begin">
+                            <a href="index-2.html">Home</a>
+                        </li>
+                        <li class="trail-item trail-end active">
+                            Checkout
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <h3 class="custom_blog_title">
+            Checkout
+        </h3>
+        <div class="checkout-wrapp">
+            <div class="shipping-address-form-wrapp">
+                <div class="shipping-address-form  checkout-form">
+                    <div class="row-col-1 row-col">
+                        <div class="shipping-address">
+                            <h3 class="title-form">
+                                Shipping Address
+                            </h3>
+                            <form action="/checkout" method="post" th:object="${order}">
+                                <p class="form-row form-row-first">
+                                    <label class="text">name</label>
+                                    <input title="first" type="text" class="input-text" th:field="*{name}" required>
+                                </p>
+                                <p class="form-row form-row-last">
+                                    <label class="text">Email</label>
+                                    <input title="last" type="text" class="input-text" th:field="*{email}" required>
+                                </p>
+
+                                <p class="form-row form-row-first">
+                                    <label class="text">Phone</label>
+                                    <input title="zip" type="text" class="input-text" th:field="*{phone}" required>
+                                </p>
+                                <p class="form-row form-row-last">
+                                    <label class="text">Address</label>
+                                    <input title="address" type="text" class="input-text" th:field="*{address}" required>
+                                </p>
+                                <input type="submit" class="button-submit" value="Check Out">
+                            </form>
+
+                        </div>
+                    </div>
+                    <div class="row-col-2 row-col">
+                        <div class="your-order">
+                            <h3 class="title-form">
+                                Your Order
+                            </h3>
+                            <ul class="list-product-order">
+                                <li class="product-item-order" th:each="ca : ${cart}">
+                                    <div class="product-thumb">
+                                        <a href="#">
+                                            <img th:src="@{'/uploads/'+${ca.product.image}}" alt="img">
+                                        </a>
+                                    </div>
+                                    <div class="product-order-inner">
+                                        <h5 class="product-name">
+                                            <a href="#" th:text="${ca.product.productName}"></a>
+                                        </h5>
+                                        <span class="attributes-select attributes-color">Black,</span>
+                                        <span class="attributes-select attributes-size">XXL</span>
+                                        <div>
+                                            <span class="price" th:text="${ca.product.price}+' x '"></span>
+                                            <span class="count" th:text="${ca.quantity}"></span>
+                                        </div>
+
+                                    </div>
+                                </li>
+
+                            </ul>
+                            <div class="order-total">
+									<span class="title">
+										Total Price:
+									</span>
+                                <span class="total-price" th:text="${tatolprice}">
+
+									</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+
+            <div class="end-checkout-wrapp">
+                <div class="end-checkout checkout-form">
+                    <div class="icon">
+                    </div>
+                    <h3 class="title-checkend">
+                        Congratulation! Your order has been processed.
+                    </h3>
+                    <div class="sub-title">
+                        Aenean dui mi, tempus non volutpat eget, molestie a orci.
+                        Nullam eget sem et eros laoreet rutrum.
+                        Quisque sem ante, feugiat quis lorem in.
+                    </div>
+                    <a href="#" class="button btn-return">Return to Store</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<th:block th:insert="users/layouts/footer.html"></th:block>
+
+<th:block th:insert="users/layouts/script.html"></th:block>
+</body>
+
+<!-- Mirrored from ledthanhdat.vn/html/stelina/checkout.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 23 Nov 2023 08:29:46 GMT -->
+</html>

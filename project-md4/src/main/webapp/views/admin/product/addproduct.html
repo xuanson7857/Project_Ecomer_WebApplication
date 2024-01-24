@@ -1,0 +1,109 @@
+<!DOCTYPE html >
+<html xmlns:th="http://www.thymeleaf.org">
+<th:block th:insert="admin/layouts/head.html"></th:block>
+<body class="hold-transition skin-blue sidebar-mini">
+<!-- Site wrapper -->
+<div class="wrapper">
+
+    <th:block th:insert="admin/layouts/header.html"></th:block>
+
+    <!-- Left side column. contains the sidebar -->
+    <th:block th:insert="admin/layouts/sidebar.html"></th:block>
+
+    <!-- =============================================== -->
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+
+        <div class="box __web-inspector-hide-shortcut__" style="width:100%; padding:60px">
+
+
+            <div class="box box-info">
+                <div class="box-header with-border">
+                    <h1 class="box-title">Thêm mới sản phẩm</h1>
+                </div>
+
+
+                <form class="form-horizontal" action="/admin/addproduct" method="post" th:object="${productDTO}" enctype="multipart/form-data">
+                    <!-- Tên sản phẩm -->
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label for="productName" class="col-sm-2 control-label">Tên sản phẩm</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="productName" th:field="*{productName}">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Giá -->
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label for="price" class="col-sm-2 control-label">Giá</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="price" th:field="*{price}">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Ảnh -->
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label for="image" class="col-sm-2 control-label">Ảnh</label>
+                            <div class="col-sm-10">
+                                <input type="file" class="form-control" id="image" th:field="*{image}" name="image">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Số lượng -->
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label for="stock" class="col-sm-2 control-label">Số lượng</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="stock" th:field="*{stock}">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Danh mục -->
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label for="categoryId" class="col-sm-2 control-label">Danh mục</label>
+                            <div class="col-sm-10">
+                                <select class="form-control" id="categoryId" name="categoryId" th:field="*{category.categoryId}">
+                                    <option th:each="item : ${categoryList  }" th:value="${item.categoryId}" th:text="${item.categoryName}"></option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Mô tả -->
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label for="description" class="col-sm-2 control-label">Mô tả</label>
+                            <div class="col-sm-10">
+                                <textarea th:field="*{description}" id="description" th:cols="90" th:rows="5"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Nút Submit -->
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-info pull-right">Add</button>
+                    </div>
+                </form>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+    <th:block th:insert="admin/layouts/footer.html"></th:block>
+
+</div>
+
+<th:block th:insert="admin/layouts/script.html"></th:block>
+</body>
+</html>

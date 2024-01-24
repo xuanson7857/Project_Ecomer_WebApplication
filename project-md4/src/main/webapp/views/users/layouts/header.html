@@ -1,0 +1,204 @@
+<header class="header style7">
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-left">
+                <div class="header-message">
+                    Welcome to our online store!
+                </div>
+            </div>
+            <div class="top-bar-right"  style="margin-right:70px" >
+                <div class="header-language">
+                    <div class="stelina-language stelina-dropdown">
+                        <a href="#" class="active language-toggle" data-stelina="stelina-dropdown">
+									<span>
+										English (USD)
+									</span>
+                        </a>
+                        <ul class="stelina-submenu">
+                            <li class="switcher-option">
+                                <a href="#">
+											<span>
+												French (EUR)
+											</span>
+                                </a>
+                            </li>
+                            <li class="switcher-option">
+                                <a href="#">
+											<span>
+												Japanese (JPY)
+											</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+
+
+                <ul class="header-user-links">
+
+                    <div class="header-language">
+                        <div class="stelina-language stelina-dropdown">
+                            <span th:if="${session.username == null}">
+                                <a th:href="@{/login}">Login</a>
+                            </span>
+
+                                 <span th:if="${session.username != null}">
+                                        <span th:text="${session.username.getUserName()}" class="block_infor"></span>
+                                      <a href="#" class="active language-toggle " data-stelina="stelina-dropdown"> </a>
+                                 </span>
+
+                            <ul class="stelina-submenu">
+                                <li class="switcher-option">
+                                    <a href="#">
+											<span>
+												<a class="dropdown-item" style="padding:0px 0px 0px 3px" href="">Trang cá nhân</a>
+											</span>
+                                    </a>
+                                </li>
+                                <li class="switcher-option">
+                                    <a href="#">
+											<span>
+												<a class="dropdown-item" style="padding:0px 0px 0px 3px" href="/logout">Logout</a>
+											</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </ul>
+
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="main-header">
+            <div class="row">
+                <div class="col-lg-3 col-sm-4 col-md-3 col-xs-7 col-ts-12 header-element">
+                    <div class="logo">
+                        <a href="/">
+                            <img th:src="@{/images/logo.png}" alt="img">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-7 col-sm-8 col-md-6 col-xs-5 col-ts-12">
+                    <div class="block-search-block">
+                        <form class="form-search form-search-width-category">
+                            <div class="form-content">
+                                <div class="category">
+                                    <select title="cate" data-placeholder="All Categories" class="chosen-select"
+                                            tabindex="1">
+                                        <option value="United States">Accessories</option>
+                                        <option value="United Kingdom">Accents</option>
+                                        <option value="Afghanistan">Desks</option>
+                                        <option value="Aland Islands">Sofas</option>
+                                        <option value="Albania">New Arrivals</option>
+                                        <option value="Algeria">Bedroom</option>
+                                    </select>
+                                </div>
+                                <div class="inner">
+                                    <input type="text" class="input" name="s" value="" placeholder="Search here">
+                                </div>
+                                <button class="btn-search" type="submit">
+                                    <span class="icon-search"></span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-sm-12 col-md-3 col-xs-12 col-ts-12">
+                    <div class="header-control">
+                        <div class="block-minicart stelina-mini-cart block-header stelina-dropdown">
+                            <a href="/cart" class="shopcart-icon" >
+                                Cart
+                               <span class="count" th:text="${tatolquantity}">
+
+										</span>
+                            </a>
+
+                        </div>
+
+                        <a class="menu-bar mobile-navigation menu-toggle" href="#">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="header-nav-container rows-space-20">
+        <div class="container">
+            <div class="header-nav-wapper main-menu-wapper">
+                <div class="vertical-wapper block-nav-categori">
+                    <div class="block-title">
+							<span class="icon-bar">
+								<span></span>
+								<span></span>
+								<span></span>
+							</span>
+                        <span class="text">All Categories</span>
+                    </div>
+                    <div class="block-content verticalmenu-content">
+                        <ul class="stelina-nav-vertical vertical-menu stelina-clone-mobile-menu">
+
+                            <li class="menu-item" th:each="allCategory:${categoryList}">
+                                <a th:href="@{'/gorisproduct/'+${allCategory.categoryId}}" th:text="${allCategory.categoryName}"></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="header-nav">
+                    <div class="container-wapper">
+                        <ul class="stelina-clone-mobile-menu stelina-nav main-menu " id="menu-main-menu">
+                            <li class="menu-item">
+                                <a href="/" class="stelina-menu-item-title" title="Home">Home</a>
+                            </li>
+                            <li class="menu-item">
+                                <a th:href="@{'/allproduct/' + '1'}" class="stelina-menu-item-title" title="Shop">List</a>
+                            </li>
+                            <li class="menu-item  menu-item-has-children item-megamenu">
+                                <a href="#" class="stelina-menu-item-title" title="Pages">Pages</a>
+                                <span class="toggle-submenu"></span>
+                                <div class="submenu mega-menu menu-page">
+                                    <div class="row">
+
+                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-3 menu-page-item">
+                                            <div class="stelina-custommenu default">
+                                                <h2 class="widgettitle">Shop Pages</h2>
+                                                <ul class="menu">
+                                                    <li class="menu-item">
+                                                        <a href="/cart">Shopping Cart</a>
+                                                    </li>
+                                                    <li class="menu-item">
+                                                        <a href="/checkout">Checkout</a>
+                                                    </li>
+                                                    <li class="menu-item">
+                                                        <a href="404page.html">404</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-3 menu-page-item">
+                                        </div>
+                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-3 menu-page-item">
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li class="menu-item">
+                                <a href="/about" class="stelina-menu-item-title" title="About">About</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</header>

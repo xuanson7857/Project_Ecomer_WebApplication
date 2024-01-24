@@ -1,0 +1,251 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
+
+<!--<th:block th:insert="users/layouts/head.html"></th:block>-->
+
+
+
+<!--<body class="inblog-page">-->
+<!--<th:block th:insert="users/layouts/header.html"></th:block>-->
+
+<!--<div class="header-device-mobile">-->
+<!--    <div class="wapper">-->
+<!--        <div class="item mobile-logo">-->
+<!--            <div class="logo">-->
+<!--                <a href="#">-->
+<!--                    <img src="assets/images/logo.png" alt="img">-->
+<!--                </a>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="item item mobile-search-box has-sub">-->
+<!--            <a href="#">-->
+<!--						<span class="icon">-->
+<!--							<i class="fa fa-search" aria-hidden="true"></i>-->
+<!--						</span>-->
+<!--            </a>-->
+<!--            <div class="block-sub">-->
+<!--                <a href="#" class="close">-->
+<!--                    <i class="fa fa-times" aria-hidden="true"></i>-->
+<!--                </a>-->
+<!--                <div class="header-searchform-box">-->
+<!--                    <form class="header-searchform">-->
+<!--                        <div class="searchform-wrap">-->
+<!--                            <input type="text" class="search-input" placeholder="Enter keywords to search...">-->
+<!--                            <input type="submit" class="submit button" value="Search">-->
+<!--                        </div>-->
+<!--                    </form>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="item mobile-settings-box has-sub">-->
+<!--            <a href="#">-->
+<!--						<span class="icon">-->
+<!--							<i class="fa fa-cog" aria-hidden="true"></i>-->
+<!--						</span>-->
+<!--            </a>-->
+<!--            <div class="block-sub">-->
+<!--                <a href="#" class="close">-->
+<!--                    <i class="fa fa-times" aria-hidden="true"></i>-->
+<!--                </a>-->
+<!--                <div class="block-sub-item">-->
+<!--                    <h5 class="block-item-title">Currency</h5>-->
+<!--                    <form class="currency-form stelina-language">-->
+<!--                        <ul class="stelina-language-wrap">-->
+<!--                            <li class="active">-->
+<!--                                <a href="#">-->
+<!--											<span>-->
+<!--												English (USD)-->
+<!--											</span>-->
+<!--                                </a>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <a href="#">-->
+<!--											<span>-->
+<!--												French (EUR)-->
+<!--											</span>-->
+<!--                                </a>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <a href="#">-->
+<!--											<span>-->
+<!--												Japanese (JPY)-->
+<!--											</span>-->
+<!--                                </a>-->
+<!--                            </li>-->
+<!--                        </ul>-->
+<!--                    </form>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="item menu-bar">-->
+<!--            <a class=" mobile-navigation  menu-toggle" href="#">-->
+<!--                <span></span>-->
+<!--                <span></span>-->
+<!--                <span></span>-->
+<!--            </a>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+<!--<div class="main-content main-content-login">-->
+<!--    <div class="container">-->
+<!--        <div class="row">-->
+<!--            <div class="col-lg-12">-->
+<!--                <div class="breadcrumb-trail breadcrumbs">-->
+<!--                    <ul class="trail-items breadcrumb">-->
+<!--                        <li class="trail-item trail-begin">-->
+<!--                            <a href="index-2.html">Home</a>-->
+<!--                        </li>-->
+<!--                        <li class="trail-item trail-end active">-->
+<!--                            Authentication-->
+<!--                        </li>-->
+<!--                    </ul>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="row">-->
+<!--            <div class="content-area col-lg-12 col-md-12 col-sm-12 col-xs-12">-->
+<!--                <div class="site-main">-->
+<!--                    <h3 class="custom_blog_title">-->
+<!--                    </h3>-->
+<!--                    <div class="customer_login login-center">-->
+<!--                        <div class="row ">-->
+
+<!--                            <div th:if="${err}" class="error-message">-->
+<!--                                <h1 th:text="${err}"></h1>-->
+<!--                            </div>-->
+
+<!--                            <div class="col-lg-6 col-md-6 col-sm-12 ahha">-->
+<!--                                <div class="login-item abc">-->
+<!--                                    <h3 class="title-login">Login Admin</h3>-->
+<!--                                    <form class="login" action="/lg-admin" method="post" th:object="${user}">-->
+
+<!--                                        <div class="social-account">-->
+<!--                                            <h6 class="title-social">Login with social account</h6>-->
+<!--                                            <a href="#" class="mxh-item facebook">-->
+<!--                                                <i class="icon fa fa-facebook-square" aria-hidden="true"></i>-->
+<!--                                                <span class="text">FACEBOOK</span>-->
+<!--                                            </a>-->
+<!--                                            <a href="#" class="mxh-item twitter">-->
+<!--                                                <i class="icon fa fa-twitter" aria-hidden="true"></i>-->
+<!--                                                <span class="text">TWITTER</span>-->
+<!--                                            </a>-->
+<!--                                        </div>-->
+
+<!--                                        <p class="form-row form-row-wide">-->
+<!--                                            <label class="text">Email</label>-->
+<!--                                            <input title="username" type="text" class="input-text" th:field="*{email}">-->
+<!--                                        </p>-->
+<!--                                        <p class="form-row form-row-wide">-->
+<!--                                            <label class="text">Password</label>-->
+<!--                                            <input title="password" type="password" class="input-text" th:field="*{password}">-->
+<!--                                        </p>-->
+
+<!--                                        <p class="lost_password">-->
+<!--												<span class="inline">-->
+<!--													<input type="checkbox" id="cb1" th:name="checked" th:checked="${checked}">-->
+<!--													<label for="cb1" class="label-text">Remember me</label>-->
+<!--												</span>-->
+<!--                                        </p>-->
+
+<!--                                        <p class="form-row">-->
+<!--                                            <input type="submit" class="button-submit" value="login">-->
+<!--                                        </p>-->
+<!--                                        <a href="/register" class="dangki">Đăng ký tại đây >> </a>-->
+<!--                                    </form>-->
+<!--                                </div>-->
+<!--                            </div>-->
+
+
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+
+
+
+<!--<th:block th:insert="users/layouts/footer.html"></th:block>-->
+
+<!--<th:block th:insert="users/layouts/script.html"></th:block>-->
+
+<!--</body>-->
+
+<!--&lt;!&ndash; Mirrored from ledthanhdat.vn/html/stelina/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 23 Nov 2023 08:29:42 GMT &ndash;&gt;-->
+<!--</html>-->
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<th:block th:insert="admin/layouts/head.html"></th:block>
+<body class="hold-transition login-page">
+<div class="login-box">
+    <div class="login-logo">
+        <a href="../../index2.html"><b>Admin</b>LTE</a>
+    </div>
+
+    <div class="login-box-body">
+        <p class="login-box-msg">Sign in to start your session</p>
+        <form action="/lg-admin" method="post" th:object="${user}">
+            <div class="form-group has-feedback">
+                <input type="email" class="form-control" th:field="*{email}" placeholder="Email">
+                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+            </div>
+            <div class="form-group has-feedback">
+                <input type="password" class="form-control" th:field="*{password}" placeholder="Password">
+                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+            </div>
+            <div class="row">
+                <div class="col-xs-8">
+                    <div class="checkbox icheck">
+                    </div>
+                </div>
+
+                <div class="col-xs-4">
+                    <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+                </div>
+
+            </div>
+        </form>
+        <div class="social-auth-links text-center">
+            <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Sign in
+                using
+                Facebook</a>
+            <a href="#" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-google-plus"></i> Sign in
+                using
+                Google+</a>
+        </div>
+
+        <a href="#">I forgot my password</a><br>
+        <a href="/register" class="text-center">Register a new membership</a>
+    </div>
+
+</div>
+
+
+<script src="../../bower_components/jquery/dist/jquery.min.js"></script>
+
+<script src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+<script src="../../plugins/iCheck/icheck.min.js"></script>
+<script>
+    $(function () {
+        $('input').iCheck({
+            checkboxClass: 'icheckbox_square-blue',
+            radioClass: 'iradio_square-blue',
+            increaseArea: '20%' /* optional */
+        });
+    });
+</script>
+</body>
+</html>

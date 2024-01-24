@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<!-- Mirrored from ledthanhdat.vn/html/stelina/shoppingcart.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 23 Nov 2023 08:29:42 GMT -->
+<th:block th:insert="users/layouts/head.html"></th:block>
+<body class="inblog-page">
+
+<th:block th:insert="users/layouts/header.html"></th:block>
+
+<div class="header-device-mobile">
+    <div class="wapper">
+        <div class="item mobile-logo">
+            <div class="logo">
+                <a href="#">
+                    <img th:src="@{/images/logo.png}" alt="img">
+                </a>
+            </div>
+        </div>
+        <div class="item item mobile-search-box has-sub">
+            <a href="#">
+						<span class="icon">
+							<i class="fa fa-search" aria-hidden="true"></i>
+						</span>
+            </a>
+            <div class="block-sub">
+                <a href="#" class="close">
+                    <i class="fa fa-times" aria-hidden="true"></i>
+                </a>
+                <div class="header-searchform-box">
+                    <form class="header-searchform">
+                        <div class="searchform-wrap">
+                            <input type="text" class="search-input" placeholder="Enter keywords to search...">
+                            <input type="submit" class="submit button" value="Search">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="item mobile-settings-box has-sub">
+            <a href="#">
+						<span class="icon">
+							<i class="fa fa-cog" aria-hidden="true"></i>
+						</span>
+            </a>
+            <div class="block-sub">
+                <a href="#" class="close">
+                    <i class="fa fa-times" aria-hidden="true"></i>
+                </a>
+                <div class="block-sub-item">
+                    <h5 class="block-item-title">Currency</h5>
+                    <form class="currency-form stelina-language">
+                        <ul class="stelina-language-wrap">
+                            <li class="active">
+                                <a href="#">
+											<span>
+												English (USD)
+											</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+											<span>
+												French (EUR)
+											</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+											<span>
+												Japanese (JPY)
+											</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="item menu-bar">
+            <a class=" mobile-navigation  menu-toggle" href="#">
+                <span></span>
+                <span></span>
+                <span></span>
+            </a>
+        </div>
+    </div>
+</div>
+<div class="site-content">
+    <main class="site-main  main-container no-sidebar">
+        <div class="container">
+            <div class="breadcrumb-trail breadcrumbs">
+                <ul class="trail-items breadcrumb">
+                    <li class="trail-item trail-begin">
+                        <a href="#">
+								<span>
+									Home
+								</span>
+                        </a>
+                    </li>
+                    <li class="trail-item trail-end active">
+							<span>
+								Shopping Cart
+							</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="row">
+                <div class="main-content-cart main-content col-sm-12">
+                    <h3 class="custom_blog_title">
+                        Shopping Cart
+                    </h3>
+                    <div class="page-main-content">
+                        <div class="shoppingcart-content">
+                            <div class="cart__item-quantity">
+                                <table class="shop_table">
+                                    <thead>
+                                    <tr>
+                                        <th class="product-remove" style="font-weight: bold">Image</th>
+                                        <th class="product-thumbnail" style="font-weight: bold">Name</th>
+                                        <th class="product-name" style="font-weight: bold">Action</th>
+                                        <th class="product-price" style="font-weight: bold">Price</th>
+                                        <th class="product-quantity" style="font-weight: bold">Delete</th>
+
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+
+
+                                    <tr class="cart_item" th:each="ca : ${cart}">
+
+                                        <td class="product-thumbnail">
+                                            <a href="#">
+                                                <img th:src="@{'/uploads/'+${ca.product.image}}"
+                                                     style="width: 150px; height: 100px " alt="img"
+                                                     class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image">
+                                            </a>
+                                        </td>
+                                        <td class="product-name" data-title="Product">
+                                            <a href="#" class="title" th:text="${ca.product.productName}"
+                                               style="font-weight: bold"></a>
+                                        </td>
+                                        <td class="product-quantity" data-title="Quantity" style="text-align: center">
+                                            <div class="quantity">
+                                                <form action="/update-cart" method="post">
+
+                                                    <div class="control" style="display: flex;justify-content: center">
+                                                        <button type="button"
+                                                                onclick="decrementQuantityAndSubmit(this)">-
+                                                        </button>
+                                                        <input type="text" th:name="quantity" th:value="${ca.quantity}"
+                                                               readonly>
+                                                        <input type="hidden" th:name="productId"
+                                                               th:value="${ca.product.productId}">
+                                                        <button type="button"
+                                                                onclick="incrementQuantityAndSubmit(this)">+
+                                                        </button>
+                                                    </div>
+                                                </form>
+
+                                            </div>
+                                        </td>
+                                        <td class="product-price" data-title="Price">
+													<span class="woocommerce-Price-amount amount"
+                                                          th:text="${ca.product.price}">
+													</span>
+                                        </td>
+                                        <td>
+                                            <a th:href="@{'/delete-cart/'+ ${ca.product.productId}}"
+                                               class="btn btn-danger">
+                                                Xoá
+                                            </a>
+                                        </td>
+                                    </tr>
+
+
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td class="actions">
+
+                                            <div class="order-total">
+														<span class="title">
+															Total Price:
+														</span>
+                                                <span class="total-price" th:text="${tatolprice}">
+														</span>
+                                                <span>$</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+
+
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="control-cart">
+                                <a href="/" style="font-weight: bold; margin-right: 20px">
+                                   << Continue Shopping
+                                </a>
+                                <a href="/checkout" style="font-weight: bold">Checkout >></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+<th:block th:insert="users/layouts/footer.html"></th:block>
+
+
+<th:block th:insert="users/layouts/script.html"></th:block>
+
+
+<script>
+    function incrementQuantityAndSubmit(button) {
+        var quantityInput = button.parentElement.querySelector('input');
+        quantityInput.value = parseInt(quantityInput.value) + 1;
+        console.log("Incremented quantity:", quantityInput.value);
+        submitForm(button);
+    }
+
+    function decrementQuantityAndSubmit(button) {
+        let quantityInput = button.parentElement.querySelector('input');
+        let currentValue = parseInt(quantityInput.value);
+        if (currentValue > 1) {
+            quantityInput.value = currentValue - 1;
+            console.log("Decremented quantity:", quantityInput.value);
+            submitForm(button);
+        }
+    }
+
+    function submitForm(button) {
+        let form = button.closest('form');
+        form.submit();
+        console.log("Form submitted!");
+    }
+
+</script>
+</body>
+
+<!-- Mirrored from ledthanhdat.vn/html/stelina/shoppingcart.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 23 Nov 2023 08:29:45 GMT -->
+</html>

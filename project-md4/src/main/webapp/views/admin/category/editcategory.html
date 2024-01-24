@@ -1,0 +1,70 @@
+<!DOCTYPE html >
+<html xmlns:th="http://www.thymeleaf.org">
+<th:block th:insert="admin/layouts/head.html"></th:block>
+<body class="hold-transition skin-blue sidebar-mini">
+<!-- Site wrapper -->
+<div class="wrapper">
+
+    <th:block th:insert="admin/layouts/header.html"></th:block>
+
+    <!-- Left side column. contains the sidebar -->
+    <th:block th:insert="admin/layouts/sidebar.html"></th:block>
+
+    <!-- =============================================== -->
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+
+        <div class="box __web-inspector-hide-shortcut__" style="width:70%; margin-left:200px">
+
+
+            <div class="box box-info">
+                <div class="box-header with-border">
+                    <h1 class="box-title">Sửa danh mục</h1>
+                </div>
+
+
+                <form class="form-horizontal" action="/admin/update-category" method="post" th:object="${category}">
+                    <input type="hidden"th:field="*{categoryId}">
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label for="inputEmail3" class="col-sm-2 control-label">Tên danh mục</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="inputEmail3" th:field="*{categoryName}">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Trạng thái</label>
+                            <div class="col-sm-10">
+                                <label class="radio-inline">
+                                    <input type="radio" th:field="*{status}" th:value="true"> Hiện
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" th:field="*{status}" th:value="false"> Ẩn
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-info pull-right">Update</button>
+                    </div>
+
+                </form>
+            </div>
+
+
+        </div>
+
+    </div>
+
+    <th:block th:insert="admin/layouts/footer.html"></th:block>
+
+</div>
+
+<th:block th:insert="admin/layouts/script.html"></th:block>
+</body>
+</html>
